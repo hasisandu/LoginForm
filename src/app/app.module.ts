@@ -8,6 +8,7 @@ import { SignUpPageComponent } from './component/sign-up-page/sign-up-page.compo
 import { DashBoardComponent } from './component/dash-board/dash-board.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {CookieModule} from 'ngx-cookie';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CookieModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

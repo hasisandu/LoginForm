@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginServiceService} from '../../service/login-service.service';
+import {CookieService} from 'ngx-cookie';
 
 @Component({
   selector: 'app-login-page',
@@ -8,7 +9,7 @@ import {LoginServiceService} from '../../service/login-service.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private loginService: LoginServiceService) {
+  constructor(private loginService: LoginServiceService, private cookieService: CookieService) {
   }
 
   email = '';
@@ -19,7 +20,7 @@ export class LoginPageComponent implements OnInit {
 
   loginUser() {
     this.loginService.loginUser(this.email, this.password).subscribe(resp => {
-      if (resp.message === 'success'){
+      if (resp.message === 'success') {
 
         const todayDate = new Date();
         const tomorrow = new Date(todayDate);
@@ -27,8 +28,10 @@ export class LoginPageComponent implements OnInit {
         const cookieOption = {
           expires: tomorrow
         };
+        this.cookieService.put('tokenData', resp.token, cookieOption);
+        alert('Success!');
 
-      }else{
+      } else {
         alert('Please Try Again!');
       }
 
