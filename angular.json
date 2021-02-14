@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "LoginForm"
+    }
+  },
+  "defaultProject": "LoginForm",
+  "cli": {
+    "analytics": "ec0cbed0-5bff-4f35-91be-e186bfe0ac78"
+  }
 }
