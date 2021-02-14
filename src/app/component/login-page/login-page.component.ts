@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginServiceService} from '../../service/login-service.service';
 import {CookieService} from 'ngx-cookie';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -9,7 +10,7 @@ import {CookieService} from 'ngx-cookie';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private loginService: LoginServiceService, private cookieService: CookieService) {
+  constructor(private router:Router, private loginService: LoginServiceService, private cookieService: CookieService) {
   }
 
   email = '';
@@ -29,7 +30,7 @@ export class LoginPageComponent implements OnInit {
           expires: tomorrow
         };
         this.cookieService.put('tokenData', resp.token, cookieOption);
-        alert('Success!');
+        this.router.navigate(['/']).then();
 
       } else {
         alert('Please Try Again!');
