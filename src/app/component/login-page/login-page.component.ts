@@ -17,11 +17,12 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  registerUser() {
-    this.loginService.registerUser(this.email, this.password).subscribe(resp => {
+  loginUser() {
+    this.loginService.loginUser(this.email, this.password).subscribe(resp => {
       console.log(resp);
     }, error => {
       console.log(error);
     });
   }
+
 }

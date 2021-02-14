@@ -15,4 +15,10 @@ export class LoginServiceService {
     });
   }
 
+  public loginUser(email: string, password: string): Observable<any>{
+    return this.http.get('http://127.0.0.1:3000/api/v1/adminUserRoute/loginUser', {
+      headers: { email, password }
+    });
+  }
+
 }
