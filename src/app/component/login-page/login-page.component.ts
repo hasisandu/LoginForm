@@ -19,7 +19,19 @@ export class LoginPageComponent implements OnInit {
 
   loginUser() {
     this.loginService.loginUser(this.email, this.password).subscribe(resp => {
-      console.log(resp);
+      if (resp.message === 'success'){
+
+        const todayDate = new Date();
+        const tomorrow = new Date(todayDate);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const cookieOption = {
+          expires: tomorrow
+        };
+
+      }else{
+        alert('Please Try Again!');
+      }
+
     }, error => {
       console.log(error);
     });
